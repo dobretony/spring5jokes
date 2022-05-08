@@ -22,6 +22,10 @@
 		<java.version>18</java.version>
 	</properties>
 
+	<scm>
+		<developerConnection>scm:git:git@github.com:dobretony/spring5jokes.git</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>

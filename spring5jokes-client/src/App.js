@@ -1,25 +1,53 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          currentJoke: "Get me a joke!",
+          fetching: false
+      }
+      this.handleNewJoke = this.handleNewJoke.bind(this);
+      this.renderButton = this.renderButton.bind(this);
+  }
+
+  handleNewJoke(event) {
+    event.preventDefault();
+    console.log("A new joke is fetching...");
+    this.setState({fetching: true})
+    fetch("/joke/chucknorries")
+        .then(response => response.json())
+        .then(data => {
+            this.setState({currentJoke: data.description, fetching: false});
+            console.log(data);
+        });
+  }
+
+  renderJoke() {
+
+      if (this.state.fetching) {
+          return (<div className={"loader"}></div>);
+      } else {
+          return (<div className={"joke"}>{this.state.currentJoke}</div>);
+      }
+  }
+
+  renderButton() {
+      return (<button id={"newJokeButton"} className={"jokeButton"} onClick={this.handleNewJoke}>Joke!</button>);
+  }
+
+  render() {
+    return (
+        <div className={"app"}>
+          <div className={"jokeBox"}>
+              <div className={"jokeContainer"}>{this.renderJoke()}</div>
+              <div className={"buttonContainer"}>{this.renderButton()}</div>
+          </div>
+        </div>
+    );
+  }
 }
 
 export default App;

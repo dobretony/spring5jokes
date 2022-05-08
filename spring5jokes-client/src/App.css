@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: #E76F51;
 }
 
-.App-link {
-  color: #61dafb;
+.jokeBox {
+  width: 300px;
+  height: 300px;
+  align-self: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 30%;
+  height: 30%;
+  margin: 5px;
+}
+
+.jokeContainer {
+  width: 300px;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.joke {
+  margin: 5px;
+  color: #264653;
+}
+
+#newJokeButton {
+  width: 100%;
+  height: 100%;
+  background: #264653;
+  border-radius: 45px;
+  border: 0px solid #264653;
+  text-decoration: none;
+  color: #2A9D8F;
+}
+
+.loader {
+  border: 10px solid #E9C46A;
+  border-top: 10px solid #264653;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
